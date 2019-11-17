@@ -1,0 +1,12 @@
+Place to store our results:
+- Put the loss, accuracy and variable values so we can compare which makes our model more accurate.
+------------------------------------------
+Test loss: 0.6946866035461425
+Test accuracy: 0.7742
+
+batch_size = 32
+num_classes = 10
+epochs = 100
+data_augmentation = True
+num_predictions = 20
+------------------------------------------
