@@ -9,4 +9,6 @@ num_classes = 10
 epochs = 100
 data_augmentation = True
 num_predictions = 20
+
+opt = keras.optimizers.RMSprop(lr=0.00001, decay=1e-6)
 ------------------------------------------
