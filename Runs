@@ -12,3 +12,14 @@ num_predictions = 20
 
 opt = keras.optimizers.RMSprop(lr=0.00001, decay=1e-6)
 ------------------------------------------
+Test loss: 1.9985703918457032
+Test accuracy: 0.2005
+
+batch_size = 32
+num_classes = 10
+epochs = 100
+data_augmentation = True
+num_predictions = 20
+
+opt = keras.optimizers.RMSprop(lr=0.001, decay=1e-6)
+------------------------------------------
