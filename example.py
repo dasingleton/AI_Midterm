@@ -8,10 +8,10 @@ from keras.layers import Conv2D, MaxPooling2D
 import os
 
 batch_size = 32
-num_classes = 10
+num_classes = 100 #previously 32
 epochs = 100
 data_augmentation = True
-num_predictions = 20
+num_predictions = 100 #previously 20
 save_dir = os.path.join(os.getcwd(), 'saved_models')
 model_name = 'keras_cifar10_trained_model.h5'
 
