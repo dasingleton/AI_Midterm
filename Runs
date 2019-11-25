@@ -77,3 +77,52 @@ model.add(Activation('softmax'))
 
 Test loss: 0.5682922131538392
 Test accuracy: 0.8285
+
+----------------------------------------
+
+batch_size = 32
+num_classes = 100 #previously 32
+epochs = 25
+data_augmentation = True
+num_predictions = 100 #previously 20
+save_dir = os.path.join(os.getcwd(), 'saved_models')
+model_name = 'keras_cifar10_trained_model.h5'
+
+# The data, split between train and test sets:
+(x_train, y_train), (x_test, y_test) = cifar10.load_data()
+print('x_train shape:', x_train.shape)
+print(x_train.shape[0], 'train samples')
+print(x_test.shape[0], 'test samples')
+
+# Convert class vectors to binary class matrices.
+y_train = keras.utils.to_categorical(y_train, num_classes)
+y_test = keras.utils.to_categorical(y_test, num_classes)
+
+model = Sequential()
+model.add(Conv2D(64, (5, 5), padding='same',
+                 input_shape=x_train.shape[1:]))
+model.add(Activation('relu'))
+model.add(Conv2D(64, (5, 5)))
+model.add(Activation('relu'))
+model.add(MaxPooling2D(pool_size=(2, 2)))
+model.add(Dropout(0.25))
+
+model.add(Conv2D(128, (5, 5), padding='same'))
+model.add(Activation('relu'))
+model.add(Conv2D(256, (5, 5)))
+model.add(Activation('relu'))
+model.add(MaxPooling2D(pool_size=(2, 2)))
+model.add(Dropout(0.25))
+
+model.add(Flatten())
+model.add(Dense(512))
+model.add(Activation('elu')) #Previously 'relu' -Sean
+model.add(Dropout(0.5))
+model.add(Dense(num_classes))
+model.add(Activation('softmax'))
+
+# initiate RMSprop optimizer
+opt = keras.optimizers.RMSprop(lr=0.000105, decay=1e-6) #Previously lr=0.0001
+
+Test loss: 0.5010558716058731
+Test accuracy: 0.8456
